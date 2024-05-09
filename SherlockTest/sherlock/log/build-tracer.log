@@ -1,0 +1,319 @@
+[T 10:38:03 53959] CodeQL CLI version 2.15.5
+[T 10:38:03 53959] Initializing tracer.
+[T 10:38:03 53959] Initialising tags...
+[T 10:38:03 53959] ID set to 000000000000D2C7_0000000000000001 (parent root)
+[T 10:38:03 53959] Initializing tracer.
+[T 10:38:03 53959] Initialising tags...
+[T 10:38:03 53959] ID set to 000000000000D2C7_0000000000000002 (parent root)
+[T 10:38:03 53959] Warning: SEMMLE_EXEC and SEMMLE_EXECP not set. Falling back to path lookup on argv[0].
+[T 10:38:03 53959] ==== Candidate to intercept: /home/finechina/Tools/codeql/tools/linux64/runner-linux (canonical: /home/finechina/Tools/codeql/tools/linux64/runner-linux) ====
+[T 10:38:03 53959] Lua: === Intercepted call to /home/finechina/Tools/codeql/tools/linux64/runner-linux ===
+[T 10:38:03 53959] Executing the following tracer actions:
+[T 10:38:03 53959] Tracer actions:
+[T 10:38:03 53959] pre_invocations(0)
+[T 10:38:03 53959] post_invocations(0)
+[T 10:38:03 53959] trace_languages(1): [java]
+[T 10:38:03 53959] Initializing tracer.
+[T 10:38:03 53959] Initialising tags...
+[T 10:38:03 53959] ID set to 000000000000D2C7_0000000000000003 (parent 000000000000D2C7_0000000000000002)
+[T 10:38:03 53959] ==== Candidate to intercept: /home/finechina/Tools/gradle-8.0/bin/gradle (canonical: /home/finechina/Tools/gradle-8.0/bin/gradle) ====
+[T 10:38:03 53959] Lua: === Intercepted call to /home/finechina/Tools/gradle-8.0/bin/gradle ===
+[T 10:38:03 53959] Executing the following tracer actions:
+[T 10:38:03 53959] Tracer actions:
+[T 10:38:03 53959] pre_invocations(0)
+[T 10:38:03 53959] post_invocations(0)
+[T 10:38:03 53959] trace_languages(1): [java]
+[T 10:38:03 53963] Initializing tracer.
+[T 10:38:03 53963] Initialising tags...
+[T 10:38:03 53963] ID set to 000000000000D2CB_0000000000000001 (parent 000000000000D2C7_0000000000000003)
+[T 10:38:03 53963] ==== Candidate to intercept: /usr/bin/uname (canonical: /usr/bin/uname) ====
+[T 10:38:03 53963] Lua: === Intercepted call to /usr/bin/uname ===
+[T 10:38:03 53963] Executing the following tracer actions:
+[T 10:38:03 53963] Tracer actions:
+[T 10:38:03 53963] pre_invocations(0)
+[T 10:38:03 53963] post_invocations(0)
+[T 10:38:03 53963] trace_languages(1): [java]
+[T 10:38:03 53968] Initializing tracer.
+[T 10:38:03 53968] Initialising tags...
+[T 10:38:03 53969] Initializing tracer.
+[T 10:38:03 53969] Initialising tags...
+[T 10:38:03 53968] ID set to 000000000000D2D0_0000000000000001 (parent 000000000000D2C7_0000000000000003)
+[T 10:38:03 53968] ==== Candidate to intercept: /usr/bin/sed (canonical: /usr/bin/sed) ====
+[T 10:38:03 53969] ID set to 000000000000D2D1_0000000000000001 (parent 000000000000D2C7_0000000000000003)
+[T 10:38:03 53967] Initializing tracer.
+[T 10:38:03 53969] ==== Candidate to intercept: /usr/bin/tr (canonical: /usr/bin/tr) ====
+[T 10:38:03 53967] Initialising tags...
+[T 10:38:03 53967] ID set to 000000000000D2CF_0000000000000001 (parent 000000000000D2C7_0000000000000003)
+[T 10:38:03 53967] ==== Candidate to intercept: /usr/bin/xargs (canonical: /usr/bin/xargs) ====
+[T 10:38:03 53968] Lua: === Intercepted call to /usr/bin/sed ===
+[T 10:38:03 53968] Executing the following tracer actions:
+[T 10:38:03 53968] Tracer actions:
+[T 10:38:03 53968] pre_invocations(0)
+[T 10:38:03 53968] post_invocations(0)
+[T 10:38:03 53968] trace_languages(1): [java]
+[T 10:38:03 53969] Lua: === Intercepted call to /usr/bin/tr ===
+[T 10:38:03 53969] Executing the following tracer actions:
+[T 10:38:03 53969] Tracer actions:
+[T 10:38:03 53969] pre_invocations(0)
+[T 10:38:03 53969] post_invocations(0)
+[T 10:38:03 53969] trace_languages(1): [java]
+[T 10:38:03 53967] Lua: === Intercepted call to /usr/bin/xargs ===
+[T 10:38:03 53967] Executing the following tracer actions:
+[T 10:38:03 53967] Tracer actions:
+[T 10:38:03 53967] pre_invocations(0)
+[T 10:38:03 53967] post_invocations(0)
+[T 10:38:03 53967] trace_languages(1): [java]
+[T 10:38:03 53970] Initializing tracer.
+[T 10:38:03 53970] Initialising tags...
+[T 10:38:03 53970] ID set to 000000000000D2D2_0000000000000001 (parent 000000000000D2CF_0000000000000001)
+[T 10:38:03 53970] ==== Candidate to intercept: echo (canonical: echo) ====
+[T 10:38:03 53970] Will try to resolve echo in path /home/finechina/Tools/genymotion:/home/finechina/Android/Sdk/cmdline-tools/latest/bin:/home/finechina/Android/Sdk/emulator:/home/finechina/Android/Sdk/build-tools/34.0.0:/home/finechina/Android/Sdk/tools:/home/finechina/Android/Sdk/platform-tools:/home/finechina/.local/bin:/usr/bin:/home/finechina/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/bin.
+[T 10:38:03 53970]  -> path lookup for echo as /home/finechina/Tools/genymotion/echo...
+[T 10:38:03 53970]  -> path lookup for echo as /home/finechina/Android/Sdk/cmdline-tools/latest/bin/echo...
+[T 10:38:03 53970]  -> path lookup for echo as /home/finechina/Android/Sdk/emulator/echo...
+[T 10:38:03 53970]  -> path lookup for echo as /home/finechina/Android/Sdk/build-tools/34.0.0/echo...
+[T 10:38:03 53970]  -> path lookup for echo as /home/finechina/Android/Sdk/tools/echo...
+[T 10:38:03 53970]  -> path lookup for echo as /home/finechina/Android/Sdk/platform-tools/echo...
+[T 10:38:03 53970]  -> path lookup for echo as /home/finechina/.local/bin/echo...
+[T 10:38:03 53970]  -> path lookup for echo as /usr/bin/echo...
+[T 10:38:03 53970] Resolved barename echo to /usr/bin/echo
+[T 10:38:03 53970] Lua: === Intercepted call to /usr/bin/echo ===
+[T 10:38:03 53970] Executing the following tracer actions:
+[T 10:38:03 53970] Tracer actions:
+[T 10:38:03 53970] pre_invocations(0)
+[T 10:38:03 53970] post_invocations(0)
+[T 10:38:03 53970] trace_languages(1): [java]
+[T 10:38:03 53971] Initializing tracer.
+[T 10:38:03 53971] Initialising tags...
+[T 10:38:03 53971] ID set to 000000000000D2D3_0000000000000001 (parent 000000000000D2CF_0000000000000001)
+[T 10:38:03 53971] ==== Candidate to intercept: echo (canonical: echo) ====
+[T 10:38:03 53971] Will try to resolve echo in path /home/finechina/Tools/genymotion:/home/finechina/Android/Sdk/cmdline-tools/latest/bin:/home/finechina/Android/Sdk/emulator:/home/finechina/Android/Sdk/build-tools/34.0.0:/home/finechina/Android/Sdk/tools:/home/finechina/Android/Sdk/platform-tools:/home/finechina/.local/bin:/usr/bin:/home/finechina/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/bin.
+[T 10:38:03 53971]  -> path lookup for echo as /home/finechina/Tools/genymotion/echo...
+[T 10:38:03 53971]  -> path lookup for echo as /home/finechina/Android/Sdk/cmdline-tools/latest/bin/echo...
+[T 10:38:03 53971]  -> path lookup for echo as /home/finechina/Android/Sdk/emulator/echo...
+[T 10:38:03 53971]  -> path lookup for echo as /home/finechina/Android/Sdk/build-tools/34.0.0/echo...
+[T 10:38:03 53971]  -> path lookup for echo as /home/finechina/Android/Sdk/tools/echo...
+[T 10:38:03 53971]  -> path lookup for echo as /home/finechina/Android/Sdk/platform-tools/echo...
+[T 10:38:03 53971]  -> path lookup for echo as /home/finechina/.local/bin/echo...
+[T 10:38:03 53971]  -> path lookup for echo as /usr/bin/echo...
+[T 10:38:03 53971] Resolved barename echo to /usr/bin/echo
+[T 10:38:03 53971] Lua: === Intercepted call to /usr/bin/echo ===
+[T 10:38:03 53971] Executing the following tracer actions:
+[T 10:38:03 53971] Tracer actions:
+[T 10:38:03 53971] pre_invocations(0)
+[T 10:38:03 53971] post_invocations(0)
+[T 10:38:03 53971] trace_languages(1): [java]
+[T 10:38:03 53959] Initializing tracer.
+[T 10:38:03 53959] Initialising tags...
+[T 10:38:03 53959] ID set to 000000000000D2C7_0000000000000004 (parent 000000000000D2C7_0000000000000003)
+[T 10:38:03 53959] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/bin/java (canonical: /usr/lib/jvm/jdk-21-oracle-x64/bin/java) ====
+[T 10:38:03 53959] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/bin/java ===
+[T 10:38:03 53959] Executing the following tracer actions:
+[T 10:38:03 53959] Tracer actions:
+[T 10:38:03 53959] pre_invocations(0)
+[T 10:38:03 53959] post_invocations(0)
+[T 10:38:03 53959] trace_languages(1): [java]
+[T 10:38:03 53959] Passing through -javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin to underlying JVM.
+[T 10:38:03 53959] Passing through -Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 10:38:03 53959] Intercepted JVM creation with extra hidden args: ['-javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin' '-Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar' ] (result: 1, 0).
+[T 10:38:04 53996] Initializing tracer.
+[T 10:38:04 53996] Initialising tags...
+[T 10:38:04 53996] ID set to 000000000000D2EC_0000000000000001 (parent 000000000000D2C7_0000000000000004)
+[T 10:38:04 53996] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper (canonical: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper) ====
+[T 10:38:04 53996] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper ===
+[T 10:38:04 53996] Executing the following tracer actions:
+[T 10:38:04 53996] Tracer actions:
+[T 10:38:04 53996] pre_invocations(0)
+[T 10:38:04 53996] post_invocations(0)
+[T 10:38:04 53996] trace_languages(1): [java]
+[T 10:38:04 53996] Initializing tracer.
+[T 10:38:04 53996] Initialising tags...
+[T 10:38:04 53996] ID set to 000000000000D2EC_0000000000000002 (parent 000000000000D2EC_0000000000000001)
+[T 10:38:04 53996] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/bin/java (canonical: /usr/lib/jvm/jdk-21-oracle-x64/bin/java) ====
+[T 10:38:04 53996] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/bin/java ===
+[T 10:38:04 53996] Executing the following tracer actions:
+[T 10:38:04 53996] Tracer actions:
+[T 10:38:04 53996] pre_invocations(0)
+[T 10:38:04 53996] post_invocations(0)
+[T 10:38:04 53996] trace_languages(1): [java]
+[T 10:38:04 53996] Passing through -javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin to underlying JVM.
+[T 10:38:04 53996] Passing through -Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 10:38:04 53996] Intercepted JVM creation with extra hidden args: ['-javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin' '-Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar' ] (result: 1, 0).
+[T 10:38:28 54243] Initializing tracer.
+[T 10:38:28 54242] Initializing tracer.
+[T 10:38:28 54243] Initialising tags...
+[T 10:38:28 54242] Initialising tags...
+[T 10:38:28 54243] ID set to 000000000000D3E3_0000000000000001 (parent 000000000000D2EC_0000000000000002)
+[T 10:38:28 54243] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper (canonical: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper) ====
+[T 10:38:28 54242] ID set to 000000000000D3E2_0000000000000001 (parent 000000000000D2EC_0000000000000002)
+[T 10:38:28 54242] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper (canonical: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper) ====
+[T 10:38:28 54243] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper ===
+[T 10:38:28 54243] Executing the following tracer actions:
+[T 10:38:28 54243] Tracer actions:
+[T 10:38:28 54243] pre_invocations(0)
+[T 10:38:28 54243] post_invocations(0)
+[T 10:38:28 54243] trace_languages(1): [java]
+[T 10:38:28 54242] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper ===
+[T 10:38:28 54242] Executing the following tracer actions:
+[T 10:38:28 54242] Tracer actions:
+[T 10:38:28 54242] pre_invocations(0)
+[T 10:38:28 54242] post_invocations(0)
+[T 10:38:28 54242] trace_languages(1): [java]
+[T 10:38:28 54242] Initializing tracer.
+[T 10:38:28 54242] Initialising tags...
+[T 10:38:28 54243] Initializing tracer.
+[T 10:38:28 54243] Initialising tags...
+[T 10:38:28 54242] ID set to 000000000000D3E2_0000000000000002 (parent 000000000000D3E2_0000000000000001)
+[T 10:38:28 54242] ==== Candidate to intercept: /home/finechina/.gradle/caches/transforms-3/4d53ee9c2e07963b366dca15cbad7ae5/transformed/aapt2-8.1.1-10154469-linux/aapt2 (canonical: /home/finechina/.gradle/caches/transforms-3/4d53ee9c2e07963b366dca15cbad7ae5/transformed/aapt2-8.1.1-10154469-linux/aapt2) ====
+[T 10:38:28 54243] ID set to 000000000000D3E3_0000000000000002 (parent 000000000000D3E3_0000000000000001)
+[T 10:38:28 54243] ==== Candidate to intercept: /home/finechina/.gradle/caches/transforms-3/4d53ee9c2e07963b366dca15cbad7ae5/transformed/aapt2-8.1.1-10154469-linux/aapt2 (canonical: /home/finechina/.gradle/caches/transforms-3/4d53ee9c2e07963b366dca15cbad7ae5/transformed/aapt2-8.1.1-10154469-linux/aapt2) ====
+[T 10:38:28 54242] Lua: === Intercepted call to /home/finechina/.gradle/caches/transforms-3/4d53ee9c2e07963b366dca15cbad7ae5/transformed/aapt2-8.1.1-10154469-linux/aapt2 ===
+[T 10:38:28 54242] Executing the following tracer actions:
+[T 10:38:28 54242] Tracer actions:
+[T 10:38:28 54242] pre_invocations(0)
+[T 10:38:28 54242] post_invocations(0)
+[T 10:38:28 54242] trace_languages(1): [java]
+[T 10:38:28 54243] Lua: === Intercepted call to /home/finechina/.gradle/caches/transforms-3/4d53ee9c2e07963b366dca15cbad7ae5/transformed/aapt2-8.1.1-10154469-linux/aapt2 ===
+[T 10:38:28 54243] Executing the following tracer actions:
+[T 10:38:28 54243] Tracer actions:
+[T 10:38:28 54243] pre_invocations(0)
+[T 10:38:28 54243] post_invocations(0)
+[T 10:38:28 54243] trace_languages(1): [java]
+[T 10:38:31 54251] Initializing tracer.
+[T 10:38:31 54251] Initialising tags...
+[T 10:38:31 54251] ID set to 000000000000D3EB_0000000000000001 (parent 000000000000D2EC_0000000000000002)
+[T 10:38:31 54251] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper (canonical: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper) ====
+[T 10:38:31 54251] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper ===
+[T 10:38:31 54251] Executing the following tracer actions:
+[T 10:38:31 54251] Tracer actions:
+[T 10:38:31 54251] pre_invocations(0)
+[T 10:38:31 54251] post_invocations(0)
+[T 10:38:31 54251] trace_languages(1): [java]
+[T 10:38:31 54251] Initializing tracer.
+[T 10:38:31 54251] Initialising tags...
+[T 10:38:31 54251] ID set to 000000000000D3EB_0000000000000002 (parent 000000000000D3EB_0000000000000001)
+[T 10:38:31 54251] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/bin/java (canonical: /usr/lib/jvm/jdk-21-oracle-x64/bin/java) ====
+[T 10:38:31 54251] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/bin/java ===
+[T 10:38:31 54251] Executing the following tracer actions:
+[T 10:38:31 54251] Tracer actions:
+[T 10:38:31 54251] pre_invocations(0)
+[T 10:38:31 54251] post_invocations(0)
+[T 10:38:31 54251] trace_languages(1): [java]
+[T 10:38:31 54251] Passing through -javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin to underlying JVM.
+[T 10:38:31 54251] Passing through -Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 10:38:31 54251] Intercepted JVM creation with extra hidden args: ['-javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin' '-Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar' ] (result: 1, 0).
+[T 10:38:39 54321] Initializing tracer.
+[T 10:38:39 54321] Initialising tags...
+[T 10:38:39 54321] ID set to 000000000000D431_0000000000000001 (parent 000000000000D2EC_0000000000000002)
+[T 10:38:39 54321] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper (canonical: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper) ====
+[T 10:38:39 54321] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper ===
+[T 10:38:39 54321] Executing the following tracer actions:
+[T 10:38:39 54321] Tracer actions:
+[T 10:38:39 54321] pre_invocations(0)
+[T 10:38:39 54321] post_invocations(0)
+[T 10:38:39 54321] trace_languages(1): [java]
+[T 10:38:39 54321] Initializing tracer.
+[T 10:38:39 54321] Initialising tags...
+[T 10:38:39 54321] ID set to 000000000000D431_0000000000000002 (parent 000000000000D431_0000000000000001)
+[T 10:38:39 54321] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/bin/java (canonical: /usr/lib/jvm/jdk-21-oracle-x64/bin/java) ====
+[T 10:38:39 54321] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/bin/java ===
+[T 10:38:39 54321] Executing the following tracer actions:
+[T 10:38:39 54321] Tracer actions:
+[T 10:38:39 54321] pre_invocations(0)
+[T 10:38:39 54321] post_invocations(0)
+[T 10:38:39 54321] trace_languages(1): [java]
+[T 10:38:39 54321] Passing through -javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin to underlying JVM.
+[T 10:38:39 54321] Passing through -Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 10:38:39 54321] Intercepted JVM creation with extra hidden args: ['-javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin' '-Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar' ] (result: 1, 0).
+[T 10:38:41 54350] Initializing tracer.
+[T 10:38:41 54350] Initialising tags...
+[T 10:38:41 54350] ID set to 000000000000D44E_0000000000000001 (parent 000000000000D2EC_0000000000000002)
+[T 10:38:41 54350] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper (canonical: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper) ====
+[T 10:38:41 54350] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper ===
+[T 10:38:41 54350] Executing the following tracer actions:
+[T 10:38:41 54350] Tracer actions:
+[T 10:38:41 54350] pre_invocations(0)
+[T 10:38:41 54350] post_invocations(0)
+[T 10:38:41 54350] trace_languages(1): [java]
+[T 10:38:41 54350] Initializing tracer.
+[T 10:38:41 54350] Initialising tags...
+[T 10:38:41 54350] ID set to 000000000000D44E_0000000000000002 (parent 000000000000D44E_0000000000000001)
+[T 10:38:41 54350] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/bin/java (canonical: /usr/lib/jvm/jdk-21-oracle-x64/bin/java) ====
+[T 10:38:41 54350] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/bin/java ===
+[T 10:38:41 54350] Executing the following tracer actions:
+[T 10:38:41 54350] Tracer actions:
+[T 10:38:41 54350] pre_invocations(0)
+[T 10:38:41 54350] post_invocations(0)
+[T 10:38:41 54350] trace_languages(1): [java]
+[T 10:38:41 54350] Passing through -javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin to underlying JVM.
+[T 10:38:41 54350] Passing through -Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 10:38:42 54350] Intercepted JVM creation with extra hidden args: ['-javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin' '-Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar' ] (result: 1, 0).
+[T 10:38:43 54396] Initializing tracer.
+[T 10:38:43 54396] Initialising tags...
+[T 10:38:43 54396] ID set to 000000000000D47C_0000000000000001 (parent 000000000000D2EC_0000000000000002)
+[T 10:38:43 54396] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper (canonical: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper) ====
+[T 10:38:43 54396] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper ===
+[T 10:38:43 54396] Executing the following tracer actions:
+[T 10:38:43 54396] Tracer actions:
+[T 10:38:43 54396] pre_invocations(0)
+[T 10:38:43 54396] post_invocations(0)
+[T 10:38:43 54396] trace_languages(1): [java]
+[T 10:38:43 54396] Initializing tracer.
+[T 10:38:43 54396] Initialising tags...
+[T 10:38:43 54396] ID set to 000000000000D47C_0000000000000002 (parent 000000000000D47C_0000000000000001)
+[T 10:38:43 54396] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/bin/java (canonical: /usr/lib/jvm/jdk-21-oracle-x64/bin/java) ====
+[T 10:38:43 54396] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/bin/java ===
+[T 10:38:43 54396] Executing the following tracer actions:
+[T 10:38:43 54396] Tracer actions:
+[T 10:38:43 54396] pre_invocations(0)
+[T 10:38:43 54396] post_invocations(0)
+[T 10:38:43 54396] trace_languages(1): [java]
+[T 10:38:43 54396] Passing through -javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin to underlying JVM.
+[T 10:38:43 54396] Passing through -Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 10:38:43 54396] Intercepted JVM creation with extra hidden args: ['-javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin' '-Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar' ] (result: 1, 0).
+[T 10:38:44 54427] Initializing tracer.
+[T 10:38:44 54427] Initialising tags...
+[T 10:38:44 54427] ID set to 000000000000D49B_0000000000000001 (parent 000000000000D2EC_0000000000000002)
+[T 10:38:44 54427] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper (canonical: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper) ====
+[T 10:38:44 54427] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper ===
+[T 10:38:44 54427] Executing the following tracer actions:
+[T 10:38:44 54427] Tracer actions:
+[T 10:38:44 54427] pre_invocations(0)
+[T 10:38:44 54427] post_invocations(0)
+[T 10:38:44 54427] trace_languages(1): [java]
+[T 10:38:44 54427] Initializing tracer.
+[T 10:38:44 54427] Initialising tags...
+[T 10:38:44 54427] ID set to 000000000000D49B_0000000000000002 (parent 000000000000D49B_0000000000000001)
+[T 10:38:44 54427] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/bin/java (canonical: /usr/lib/jvm/jdk-21-oracle-x64/bin/java) ====
+[T 10:38:44 54427] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/bin/java ===
+[T 10:38:44 54427] Executing the following tracer actions:
+[T 10:38:44 54427] Tracer actions:
+[T 10:38:44 54427] pre_invocations(0)
+[T 10:38:44 54427] post_invocations(0)
+[T 10:38:44 54427] trace_languages(1): [java]
+[T 10:38:44 54427] Passing through -javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin to underlying JVM.
+[T 10:38:44 54427] Passing through -Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 10:38:44 54427] Intercepted JVM creation with extra hidden args: ['-javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin' '-Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar' ] (result: 1, 0).
+[T 10:38:45 54458] Initializing tracer.
+[T 10:38:45 54458] Initialising tags...
+[T 10:38:45 54458] ID set to 000000000000D4BA_0000000000000001 (parent 000000000000D2EC_0000000000000002)
+[T 10:38:45 54458] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper (canonical: /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper) ====
+[T 10:38:45 54458] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/lib/jspawnhelper ===
+[T 10:38:45 54458] Executing the following tracer actions:
+[T 10:38:45 54458] Tracer actions:
+[T 10:38:45 54458] pre_invocations(0)
+[T 10:38:45 54458] post_invocations(0)
+[T 10:38:45 54458] trace_languages(1): [java]
+[T 10:38:45 54458] Initializing tracer.
+[T 10:38:45 54458] Initialising tags...
+[T 10:38:45 54458] ID set to 000000000000D4BA_0000000000000002 (parent 000000000000D4BA_0000000000000001)
+[T 10:38:45 54458] ==== Candidate to intercept: /usr/lib/jvm/jdk-21-oracle-x64/bin/java (canonical: /usr/lib/jvm/jdk-21-oracle-x64/bin/java) ====
+[T 10:38:45 54458] Lua: === Intercepted call to /usr/lib/jvm/jdk-21-oracle-x64/bin/java ===
+[T 10:38:45 54458] Executing the following tracer actions:
+[T 10:38:45 54458] Tracer actions:
+[T 10:38:45 54458] pre_invocations(0)
+[T 10:38:45 54458] post_invocations(0)
+[T 10:38:45 54458] trace_languages(1): [java]
+[T 10:38:45 54458] Passing through -javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin to underlying JVM.
+[T 10:38:45 54458] Passing through -Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 10:38:46 54458] Intercepted JVM creation with extra hidden args: ['-javaagent:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar=ignore-project,java,kotlin' '-Xbootclasspath/a:/home/finechina/Tools/codeql/java/tools/codeql-java-agent.jar' ] (result: 1, 0).

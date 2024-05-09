@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <permission
+        android:name="sherlock.test.SIGNATURE_PERMISSION"
+        android:protectionLevel="signature"/>
+    <permission android:name="sherlock.test.NORMAL_PERMISSION"/>
+    <permission
+        android:name="sherlock.test.DANGEROUS_PERMISSION"
+        android:protectionLevel="dangerous"/>
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.SherlockTest"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".insecure_set_result.BasicActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".insecure_set_result.ImplicitIntentActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".insecure_set_result.DeeplinkActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="sherlock" android:host="insecure.set.result.deeplink"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".intent_redirection.BasicActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".intent_redirection.ImplicitIntentActivity"
+            android:exported="true"/>
+        <activity android:name=".intent_redirection.AllowedOriginActivity"/>
+        <activity android:name=".intent_redirection.AllowedDestActivity"/>
+        <activity
+            android:name=".intent_redirection.BasicDeeplinkActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="sherlock" android:host="intent.redirection.basic.deeplink"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".intent_redirection.DeeplinkActivity"
+            android:exported="true"
+            tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="sherlock" android:host="intent.redirection.deeplink"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".unsafe_intent_uri.component.BasicActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".unsafe_intent_uri.webview.BasicActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".unsafe_intent_uri.DestActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="sherlock.test.UNSAFE_INTENT_URI_BASIC"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="sherlock.test.UNSAFE_INTENT_URI_WEBVIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".unsafe_intent_uri.webview.BasicDeeplinkActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="sherlock" android:host="webview.intent.uri.basic.deeplink"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".unsafe_intent_uri.webview.DeeplinkActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="sherlock" android:host="webview.intent.uri.deeplink"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".mutable_pending_intent.NotificationActivity" android:exported="true"/>
+        <activity android:name=".mutable_pending_intent.BasicActivity" android:exported="true"/>
+        <activity android:name=".mutable_pending_intent.DestActivity"/>
+        <receiver
+            android:name=".mutable_pending_intent.DestReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="sherlock.test.PENDING_INTENT_BROADCAST"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".mutable_pending_intent.NotificationReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="sherlock.test.NOTIFICATION"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name=".insecure_broadcast.BasicActivity" android:exported="true"/>
+        <activity android:name=".insecure_broadcast.InsufficientProtectionActivity" android:exported="true"/>
+        <activity android:name=".protected_components.ProtectedActivity"/>
+        <activity android:name=".protected_components.ProtectedWebViewActivity"/>
+        <activity
+            android:name=".protected_components.ProtectedWebViewDeeplinkActivity"
+            android:exported="false"
+            tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="sherlock" android:host="protected.components"/>
+            </intent-filter>
+        </activity>
+        <receiver
+            android:name=".insecure_broadcast.BroadcastHandler"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="sherlock.test.BROADCAST_HANDLER"/>
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name=".providers.UsersProvider"
+            android:authorities="sherlock.test.users_provider"
+            android:exported="false"
+            android:grantUriPermissions="true"/>
+        <provider
+            android:name=".providers.SherlockFileProvider"
+            android:authorities="sherlock.test.file_provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+    </application>
+
+</manifest>

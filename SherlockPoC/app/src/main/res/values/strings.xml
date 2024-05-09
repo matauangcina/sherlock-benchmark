@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">SherlockPoC</string>
+
+    <string name="insecure_set_result">Insecure setResult</string>
+    <string name="intent_redirection">Intent Redirection</string>
+    <string name="unsafe_intent_uri">Unsafe Intent URI</string>
+    <string name="mutable_pending_intent">Mutable Pending Intent</string>
+    <string name="insecure_broadcast">Insecure Broadcast</string>
+
+    <string name="basic">Basic</string>
+    <string name="implicit">Implicit</string>
+    <string name="component_basic">Component - Basic</string>
+    <string name="component_implicit">Component - Implicit</string>
+    <string name="webview_basic">WebView - Basic</string>
+    <string name="webview_implicit">WebView - Implicit</string>
+    <string name="webview_basic_deeplink">WebView - Basic Deeplink</string>
+    <string name="webview_deeplink">WebView - Deeplink</string>
+    <string name="deeplink">Deeplink</string>
+    <string name="basic_deeplink">Basic Deeplink</string>
+
+    <string name="enable_notification_access">Enable Notification Access</string>
+    <string name="register_receiver">Register Receiver</string>
+    <string name="notification">Notification</string>
+    <string name="insufficient_protection">Insufficient Protection</string>
+</resources>
