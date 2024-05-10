@@ -73,8 +73,10 @@ public class BasicActivity extends AppCompatActivity {
         binding.basicOneSafe.setOnClickListener(v1 -> {
             try {
                 Intent good = Intent.parseUri(getIntent().getDataString(), Intent.URI_INTENT_SCHEME);
-                ActivityInfo activityInfo = good.resolveActivityInfo(getPackageManager(), 0);
-                if (activityInfo != null && activityInfo.enabled && activityInfo.exported) {
+                ComponentName origin = getCallingActivity();
+                if (origin != null
+                        && origin.getPackageName().equals("sherlock.test")
+                        && origin.getClassName().equals("sherlock.test.intent_redirection.AllowedOriginActivity")){
                     startActivity(good);
                 }
                 Toast.makeText(this, "Attempting to launch: " + good, Toast.LENGTH_SHORT).show();
@@ -89,9 +91,7 @@ public class BasicActivity extends AppCompatActivity {
                 Bundle bundle = intent.getBundleExtra("bundle");
                 String intentUri = bundle.getString(EXTRA_URL);
                 Intent good = Intent.parseUri(intentUri, Intent.URI_INTENT_SCHEME);
-                if (IntentUtils.isActivityExported(this, good)) {
-                    startActivity(good);
-                }
+                IntentUtils.sanitizeAndLaunchIntent(this, good);
                 Toast.makeText(this, "Attempting to launch: " + good, Toast.LENGTH_SHORT).show();
             } catch (URISyntaxException e) {
                 throw new RuntimeException(e);

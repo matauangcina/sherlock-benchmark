@@ -91,6 +91,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <activity android:name=".unsafe_intent_uri.OriginActivity"/>
         <activity
             android:name=".unsafe_intent_uri.webview.BasicDeeplinkActivity"
             android:exported="true">

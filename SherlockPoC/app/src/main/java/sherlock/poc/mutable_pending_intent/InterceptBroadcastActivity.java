@@ -25,7 +25,7 @@ public class InterceptBroadcastActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Toast.makeText(this, "Registering receiver with action: sherlock.test.PENDING_INTENT_BROADCAST", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Registering receiver with action: sherlock.test.MUTABLE_PENDING_INTENT_BROADCAST", Toast.LENGTH_SHORT).show();
 
         IntentFilter filter = new IntentFilter("sherlock.test.MUTABLE_PENDING_INTENT_BROADCAST");
         filter.setPriority(999);

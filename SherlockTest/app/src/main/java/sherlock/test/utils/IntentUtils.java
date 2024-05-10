@@ -1,5 +1,6 @@
 package sherlock.test.utils;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -18,9 +19,9 @@ public class IntentUtils {
         );
     }
 
-    public static boolean isActivityExported(Context context, Intent intent) {
-        ActivityInfo activityInfo = intent.resolveActivityInfo(context.getPackageManager(), 0);
-        return activityInfo != null && activityInfo.enabled && activityInfo.exported;
+    public static void sanitizeAndLaunchIntent(Context context, Intent intent) {
+        intent.setClassName(context.getPackageName(), "sherlock.test.unsafe_intent_uri.DestActivity");
+        context.startActivity(intent);
     }
 
     public static void unsafeActivityLaunch(Context context, Intent intent) throws URISyntaxException {
