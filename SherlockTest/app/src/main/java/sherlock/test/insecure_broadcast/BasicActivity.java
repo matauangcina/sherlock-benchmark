@@ -60,6 +60,7 @@ public class BasicActivity extends AppCompatActivity {
 
         binding.basicOneSafe.setOnClickListener(v1 -> {
             Intent good = new Intent("sherlock.test.BROADCAST_HANDLER");
+            good.setComponent(null);
             good.setClassName(getPackageName(), "sherlock.test.insecure_broadcast.BroadcastHandler");
             good.putExtra(EXTRA_USER, UserLab.getInstance(this).getUsersData());
             sendBroadcast(good);

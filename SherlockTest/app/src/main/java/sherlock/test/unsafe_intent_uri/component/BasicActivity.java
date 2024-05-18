@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.net.URISyntaxException;
 
 import sherlock.test.databinding.ActivityUnsafeIntentBasicBinding;
+import sherlock.test.unsafe_intent_uri.DestActivity;
 import sherlock.test.utils.IntentUtils;
 
 public class BasicActivity extends AppCompatActivity {
@@ -41,6 +42,8 @@ public class BasicActivity extends AppCompatActivity {
         binding.basicOneUnsafe.setOnClickListener(v1 -> {
             try {
                 Intent bad = Intent.parseUri(getIntent().getStringExtra(EXTRA_URL), Intent.URI_INTENT_SCHEME);
+                bad.setClass(this, DestActivity.class);
+                bad.setComponent(null);
                 startActivity(bad);
             } catch (URISyntaxException e) {
                 throw new RuntimeException(e);

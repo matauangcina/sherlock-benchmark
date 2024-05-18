@@ -48,11 +48,11 @@ public class DeeplinkActivity extends AppCompatActivity {
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
                     Bundle bundle = result.getData().getExtras();
-                    Intent good = bundle.getParcelable(REDIRECT_INTENT);
-                    for (ResolveInfo info : getPackageManager().queryIntentActivities(good, 0)) {
-                        good.setClassName(info.activityInfo.packageName, info.activityInfo.name);
+                    Intent bad = bundle.getParcelable(REDIRECT_INTENT);
+                    for (ResolveInfo info : getPackageManager().queryIntentActivities(bad, 0)) {
+                        bad.setClassName(info.activityInfo.packageName, info.activityInfo.name);
                     }
-                    startActivity(good);
+                    startActivity(bad);
                 }
             }
     );

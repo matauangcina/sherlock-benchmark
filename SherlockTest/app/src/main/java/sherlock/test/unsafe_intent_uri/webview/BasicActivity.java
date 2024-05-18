@@ -105,7 +105,7 @@ public class BasicActivity extends AppCompatActivity {
             Toast.makeText(this, "Attempting to load: " + url, Toast.LENGTH_SHORT).show();
         });
 
-        binding.basicTwoUnsafe.setOnClickListener(v1 -> {
+        binding.basicTwoSafe.setOnClickListener(v1 -> {
             Toast.makeText(
                     this,
                     "Load sherlock.test.webview_intent_uri.BasicDeeplinkActivity with: sherlock://webview.intent.uri.basic.deeplink/safe",
