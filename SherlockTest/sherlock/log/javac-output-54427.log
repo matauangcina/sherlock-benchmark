@@ -1,3 +1,0 @@
-[2024-03-19 10:38:45] [javac-output-54427] warning: [options] source value 8 is obsolete and will be removed in a future release
-[2024-03-19 10:38:45] [javac-output-54427] warning: [options] target value 8 is obsolete and will be removed in a future release
-[2024-03-19 10:38:45] [javac-output-54427] warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
