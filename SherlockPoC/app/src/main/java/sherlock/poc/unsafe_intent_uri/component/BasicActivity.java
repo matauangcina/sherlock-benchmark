@@ -18,6 +18,7 @@ public class BasicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent target = new Intent();
+        target.setSelector(new Intent().setClassName("sherlock.test", "sherlock.test.protected_components.ProtectedActivity"));
         target.setClassName("sherlock.test", "sherlock.test.protected_components.ProtectedActivity");
 
         String intentUri = target.toUri(Intent.URI_INTENT_SCHEME);

@@ -3,6 +3,7 @@ package sherlock.test.insecure_broadcast;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -52,6 +53,7 @@ public class BasicActivity extends AppCompatActivity {
 
         binding.basicThreeUnsafe.setOnClickListener(v1 -> {
             Intent bad = new Intent("sherlock.test.BROADCAST_HANDLER");
+            bad.setClassName(this, "sherlock.test.insecure_broadcast.BroadcastHandler");
             bad.setComponent(null);
             bad.putExtra(EXTRA_USER, UserLab.getInstance(this).getUsersData());
             sendBroadcast(bad);
@@ -75,8 +77,7 @@ public class BasicActivity extends AppCompatActivity {
         });
 
         binding.basicThreeSafe.setOnClickListener(v1 -> {
-            Intent good = new Intent("sherlock.test.BROADCAST_HANDLER");
-            BroadcastUtils.setHandler(this, good);
+            Intent good = new Intent("sherlock.test.BROADCAST_HANDLER", Uri.parse("test://test/test"), this, BroadcastHandler.class);
             good.putExtra(EXTRA_USER, UserLab.getInstance(this).getUsersData());
             sendBroadcast(good);
             Toast.makeText(this, "Broadcast launched: " + good, Toast.LENGTH_SHORT).show();

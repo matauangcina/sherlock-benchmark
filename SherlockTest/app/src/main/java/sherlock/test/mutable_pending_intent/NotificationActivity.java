@@ -127,7 +127,7 @@ public class NotificationActivity extends AppCompatActivity {
             Intent explicitBase = new Intent();
             explicitBase.setClassName("sherlock.test", "sherlock.test.mutable_pending_intent.AllowedActivity");
             PendingIntent good = PendingIntent.getActivity(this,
-                    REQUEST_CODE, explicitBase, PendingIntent.FLAG_IMMUTABLE);
+                    REQUEST_CODE, explicitBase, PendingIntent.FLAG_MUTABLE);
             NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                     .setSmallIcon(android.R.drawable.ic_menu_report_image)
                     .setContentTitle("GOOD..")

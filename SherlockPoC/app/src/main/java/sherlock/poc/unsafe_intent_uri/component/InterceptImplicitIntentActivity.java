@@ -13,6 +13,7 @@ public class InterceptImplicitIntentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent target = new Intent();
+        target.setSelector(new Intent().setClassName("sherlock.test", "sherlock.test.protected_components.ProtectedWebViewActivity"));
         target.setClassName("sherlock.test", "sherlock.test.protected_components.ProtectedWebViewActivity");
         target.putExtra("url", "https://www.netflix.com");
 

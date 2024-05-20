@@ -1,6 +1,7 @@
 package sherlock.test.unsafe_intent_uri.webview;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -51,8 +52,10 @@ public class BasicDeeplinkActivity extends AppCompatActivity {
                 if ("intent".equals(uri.getScheme())) {
                     try {
                         Intent i = Intent.parseUri(uri.toString(), Intent.URI_INTENT_SCHEME);
-                        i.setComponent(null);
-                        startActivity(i);
+                        ComponentName dest = i.resolveActivity(getPackageManager());
+                        if (dest.getClassName().equals("sherlock.test.unsafe_intent_uri.DestActivity") && dest.getPackageName().equals("sherlock.test")) {
+                            startActivity(i);
+                        }
                         return true;
                     } catch (URISyntaxException e) {
                         throw new RuntimeException(e);
@@ -67,9 +70,9 @@ public class BasicDeeplinkActivity extends AppCompatActivity {
         if (Objects.equals(deeplink.getAction(), Intent.ACTION_VIEW) && deeplinkUri != null) {
             if (SCHEME.equals(deeplinkUri.getScheme())
                     && HOST.equals(deeplinkUri.getHost())) {
-                if ("/unsafe".equals(deeplinkUri.getPath())) {
+                if ("/unfiltered".equals(deeplinkUri.getPath())) {
                     webView.loadUrl(deeplinkUri.getQueryParameter(EXTRA_URL));
-                } else if ("/safe".equals(deeplinkUri.getPath())) {
+                } else if ("/filtered".equals(deeplinkUri.getPath())) {
                     String url = deeplinkUri.getQueryParameter(EXTRA_URL);
                     if (isValidUrl(url)) {
                         webView.loadUrl(url);

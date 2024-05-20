@@ -22,10 +22,12 @@ public class BasicActivity extends AppCompatActivity {
                 "sherlock.test.protected_components.ProtectedActivity");
 
         String intentUri = target.toUri(Intent.URI_INTENT_SCHEME);
+        String url = "https://sherlock-93f40.web.app/?url=" + Uri.encode(intentUri);
 
         Intent i = new Intent();
+        i.setData(Uri.parse(url));
         i.setClassName("sherlock.test", "sherlock.test.unsafe_intent_uri.webview.BasicActivity");
-        i.putExtra("url", "https://sherlock-93f40.web.app/?url=" + Uri.encode(intentUri));
+        i.putExtra("url", url);
         startActivity(i);
     }
 }

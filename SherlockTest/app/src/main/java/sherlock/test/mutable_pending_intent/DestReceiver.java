@@ -4,13 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 public class DestReceiver extends BroadcastReceiver {
 
-    private static final String TAG = "DestReceiver";
-
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d(TAG, "Receiving broadcast with action: sherlock.test.PENDING_INTENT_BROADCAST");
+        Toast.makeText(context, "Receiving broadcast with action: sherlock.test.PENDING_INTENT_BROADCAST", Toast.LENGTH_LONG).show();
     }
 }

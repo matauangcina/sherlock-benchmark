@@ -25,7 +25,7 @@ public class BasicDeeplinkActivity extends AppCompatActivity {
         String url = Uri.encode("https://sherlock-93f40.web.app/?url=" + Uri.encode(intentUri));
 
         Intent i = new Intent("android.intent.action.VIEW");
-        i.setData(Uri.parse("sherlock://webview.intent.uri.basic.deeplink/unsafe?url=" + url));
+        i.setData(Uri.parse("sherlock://webview.intent.uri.basic.deeplink/unfiltered?url=" + url));
         i.setClassName("sherlock.test", "sherlock.test.unsafe_intent_uri.webview.BasicDeeplinkActivity");
         startActivity(i);
     }

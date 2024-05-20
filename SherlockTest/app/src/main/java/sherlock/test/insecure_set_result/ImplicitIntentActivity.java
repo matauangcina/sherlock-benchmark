@@ -29,11 +29,6 @@ public class ImplicitIntentActivity extends AppCompatActivity {
         return i;
     }
 
-    private static Intent sanitizeIntent(Intent intent) {
-        intent.removeFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-        return intent;
-    }
-
     private static Intent createSanitizedIntent(Intent intent) {
         Intent i = new Intent(intent);
         i.removeFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
@@ -131,10 +126,7 @@ public class ImplicitIntentActivity extends AppCompatActivity {
             } else if (requestCode == REQUEST_CODE_UNSAFE_TWO) {
                 setResult(RESULT_OK, data);
             } else if (requestCode == REQUEST_CODE_SAFE_ONE) {
-                data.removeFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
-                        | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                        | Intent.FLAG_GRANT_PREFIX_URI_PERMISSION
-                        | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+                data.setFlags(0);
                 setResult(RESULT_OK, data);
             } else if (requestCode == REQUEST_CODE_SAFE_TWO) {
                 Intent good = createSanitizedIntent(data);
@@ -148,7 +140,10 @@ public class ImplicitIntentActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    setResult(RESULT_OK, result.getData());
+                    Intent bad = result.getData();
+                    Intent filtered = bad.cloneFilter();
+                    filtered.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    setResult(RESULT_OK, filtered);
                     finish();
                 }
             }
@@ -158,7 +153,7 @@ public class ImplicitIntentActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    Intent bad = new Intent(result.getData());
+                    Intent bad = (Intent) result.getData().clone();
                     setResult(RESULT_OK, bad);
                     finish();
                 }
@@ -169,12 +164,8 @@ public class ImplicitIntentActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    Intent good = result.getData();
-                    good.removeFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
-                            | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                            | Intent.FLAG_GRANT_PREFIX_URI_PERMISSION
-                            | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                    setResult(RESULT_OK, good);
+                    Intent filtered = new Intent(result.getData()).cloneFilter();
+                    setResult(RESULT_OK, filtered);
                     finish();
                 }
             }
@@ -184,7 +175,8 @@ public class ImplicitIntentActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    Intent good = sanitizeIntent(result.getData());
+                    Intent good = (Intent) result.getData().clone();
+                    good.removeFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                     setResult(RESULT_OK, good);
                     finish();
                 }

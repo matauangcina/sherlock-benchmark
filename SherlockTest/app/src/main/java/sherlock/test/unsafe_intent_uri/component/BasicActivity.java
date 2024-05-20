@@ -1,9 +1,9 @@
 package sherlock.test.unsafe_intent_uri.component;
 
+import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -16,6 +16,8 @@ import java.net.URISyntaxException;
 import sherlock.test.databinding.ActivityUnsafeIntentBasicBinding;
 import sherlock.test.unsafe_intent_uri.DestActivity;
 import sherlock.test.utils.IntentUtils;
+
+@SuppressLint("UnsafeIntentLaunch")
 
 public class BasicActivity extends AppCompatActivity {
 
@@ -31,6 +33,10 @@ public class BasicActivity extends AppCompatActivity {
         return i;
     }
 
+    private void unsafeActivityLaunch(Intent intent) throws URISyntaxException {
+        startActivity(Intent.parseUri(intent.getStringExtra("url"), Intent.URI_INTENT_SCHEME));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +48,6 @@ public class BasicActivity extends AppCompatActivity {
         binding.basicOneUnsafe.setOnClickListener(v1 -> {
             try {
                 Intent bad = Intent.parseUri(getIntent().getStringExtra(EXTRA_URL), Intent.URI_INTENT_SCHEME);
-                bad.setClass(this, DestActivity.class);
                 bad.setComponent(null);
                 startActivity(bad);
             } catch (URISyntaxException e) {
@@ -128,8 +133,10 @@ public class BasicActivity extends AppCompatActivity {
                 try {
                     Intent good = Intent.parseUri(data.getStringExtra(EXTRA_URL), Intent.URI_INTENT_SCHEME);
                     ComponentName dest = good.resolveActivity(getPackageManager());
-                    if (dest.getClassName().equals("sherlock.test.unsafe_intent_uri.DestActivity") && dest.getPackageName().equals("sherlock.test")) {
-                        startActivity(good);
+                    if (dest.getPackageName().equals("sherlock.test")) {
+                        if (dest.getClassName().equals("sherlock.test.unsafe_intent_uri.DestActivity")) {
+                            startActivity(good);
+                        }
                     }
                     Toast.makeText(this, "Attempting to load: " + good, Toast.LENGTH_SHORT).show();
                 } catch (URISyntaxException e) {
@@ -144,7 +151,7 @@ public class BasicActivity extends AppCompatActivity {
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
                     try {
-                        IntentUtils.unsafeActivityLaunch(this, result.getData());
+                        unsafeActivityLaunch(result.getData());
                     } catch (URISyntaxException e) {
                         throw new RuntimeException(e);
                     }

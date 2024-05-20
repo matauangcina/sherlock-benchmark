@@ -26,6 +26,7 @@ public class DeeplinkActivity extends AppCompatActivity {
         Intent i = new Intent();
         i.setAction("android.intent.action.VIEW");
         i.setData(Uri.parse("sherlock://insecure.set.result.deeplink/unsafe"));
+        i.setClassName("sherlock.test", "sherlock.test.insecure_set_result.DeeplinkActivity");
         launcher.launch(i);
     }
 

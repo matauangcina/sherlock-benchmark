@@ -1,17 +1,31 @@
 package sherlock.test.mutable_pending_intent;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import sherlock.test.databinding.ActivityTargetBinding;
+
 public class DestActivity extends AppCompatActivity {
 
-    private static final String TAG = "DestActivity";
+    private static final String TAG = "sherlock.test.mutable_pending_intent.DestActivity";
+    private ActivityTargetBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i(TAG, "Receiving and processing PendingIntent..");
+        binding = ActivityTargetBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.textview.setText(TAG);
+
+        Toast.makeText(this, "Receiving and processing PendingIntent..", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
     }
 }

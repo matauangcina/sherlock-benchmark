@@ -75,7 +75,7 @@ public class BasicActivity extends AppCompatActivity {
 
         binding.basicTwoSafe.setOnClickListener(v1 -> {
             Intent safeBase = new Intent(this, DestActivity.class);
-            PendingIntent good = PendingIntent.getActivity(this, REQUEST_CODE, safeBase, PendingIntent.FLAG_IMMUTABLE);
+            PendingIntent good = PendingIntent.getActivity(this, REQUEST_CODE, safeBase, PendingIntent.FLAG_MUTABLE);
             Intent send = new Intent("sherlock.test.MUTABLE_PENDING_INTENT");
             send.putExtra(SAFE, good);
             startActivity(send);

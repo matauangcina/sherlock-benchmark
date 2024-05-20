@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,7 +13,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 import sherlock.test.databinding.ActivityImplicitBinding;
+import sherlock.test.utils.IntentUtils;
 
 @SuppressLint("UnsafeIntentLaunch")
 
@@ -36,16 +40,6 @@ public class ImplicitIntentActivity extends AppCompatActivity {
     private void unsafeRedirect(Intent intent) {
         Intent i = intent.getParcelableExtra(REDIRECT_INTENT);
         startActivity(i);
-    }
-
-    private Intent getSafeBundleParcel(Bundle bundle) {
-        Intent redirect = bundle.getParcelable(REDIRECT_INTENT);
-        ComponentName dest = redirect.resolveActivity(getPackageManager());
-        if (dest.getPackageName().equals("sherlock.test")
-                && dest.getClassName().equals("sherlock.test.intent_redirection.AllowedDestActivity")) {
-            return redirect;
-        }
-        return null;
     }
 
     @Override
@@ -136,7 +130,7 @@ public class ImplicitIntentActivity extends AppCompatActivity {
             if (requestCode == REQUEST_CODE_ONE_UNSAFE) {
                 unsafeRedirect(data);
             } else if (requestCode == REQUEST_CODE_TWO_UNSAFE) {
-                Intent bad = new Intent((Intent) data.getParcelableExtra(REDIRECT_INTENT));
+                Intent bad = (Intent) data.getExtras().get(REDIRECT_INTENT);
                 startActivity(bad);
             } else if (requestCode == REQUEST_CODE_ONE_SAFE) {
                 Intent good = data.getParcelableExtra(REDIRECT_INTENT);
@@ -185,7 +179,7 @@ public class ImplicitIntentActivity extends AppCompatActivity {
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
                     Bundle bundle = result.getData().getBundleExtra("bundle");
-                    Intent good = getSafeBundleParcel(bundle);
+                    Intent good = IntentUtils.getSafeBundleParcel(this, bundle);
                     if (good != null) {
                         startActivity(good);
                     }
@@ -199,10 +193,13 @@ public class ImplicitIntentActivity extends AppCompatActivity {
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
                     Intent good = result.getData().getParcelableExtra(REDIRECT_INTENT);
-                    ComponentName dest = good.resolveActivity(getPackageManager());
-                    if (dest.getPackageName().equals("sherlock.test")
-                            && dest.getClassName().equals("sherlock.test.intent_redirection.AllowedDestActivity")) {
-                        startActivity(good);
+                    List<ResolveInfo> resolveDestInfo = getPackageManager().queryIntentActivities(good, 0);
+                    for (ResolveInfo info : resolveDestInfo) {
+                        if (info.activityInfo.packageName.equals("sherlock.test")) {
+                            if (info.activityInfo.name.equals("sherlock.test.intent_redirection.AllowedDestActivity")) {
+                                startActivity(good);
+                            }
+                        }
                     }
                     Toast.makeText(this, "Attempting to start an activity.", Toast.LENGTH_SHORT).show();
                 }

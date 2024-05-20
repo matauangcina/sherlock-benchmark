@@ -114,7 +114,14 @@
         </activity>
         <activity android:name=".mutable_pending_intent.NotificationActivity" android:exported="true"/>
         <activity android:name=".mutable_pending_intent.BasicActivity" android:exported="true"/>
-        <activity android:name=".mutable_pending_intent.DestActivity"/>
+        <activity
+            android:name=".mutable_pending_intent.DestActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="sherlock.test.MUTABLE_PENDING_INTENT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <receiver
             android:name=".mutable_pending_intent.DestReceiver"
             android:exported="false">

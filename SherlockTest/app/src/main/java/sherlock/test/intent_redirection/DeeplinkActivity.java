@@ -1,6 +1,5 @@
 package sherlock.test.intent_redirection;
 
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -13,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
-import sherlock.test.utils.IntentUtils;
 
 public class DeeplinkActivity extends AppCompatActivity {
 
@@ -63,10 +61,8 @@ public class DeeplinkActivity extends AppCompatActivity {
                 if (result.getResultCode() == RESULT_OK) {
                     Bundle bundle = result.getData().getExtras();
                     Intent good = bundle.getParcelable(REDIRECT_INTENT);
-                    ComponentName origin = getCallingActivity();
-                    if (origin.getClassName().equals("sherlock.test.intent_redirection.AllowedOriginActivity") && origin.getPackageName().equals("sherlock.test")) {
-                        startActivity(good);
-                    }
+                    good.putExtra("random", "random").setClass(this, AllowedDestActivity.class);
+                    startActivity(good);
                     Toast.makeText(this, "Attempting to start an activity!", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -1,16 +1,12 @@
 package sherlock.test.intent_redirection;
 
 import android.annotation.SuppressLint;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.net.URISyntaxException;
 
 import sherlock.test.databinding.ActivityBasicBinding;
 
@@ -28,12 +24,11 @@ public class BasicActivity extends AppCompatActivity {
         return i;
     }
 
-    private void safeRedirect(Intent intent) {
-        Intent good = intent.getParcelableExtra(REDIRECT_INTENT);
-        ComponentName dest = good.resolveActivity(getPackageManager());
-        if (dest.getPackageName().equals("sherlock.test") && dest.getClassName().equals("sherlock.test.intent_redirection.AllowedDestActivity")) {
-            startActivity(good);
+    private void startAndFinishIntent(Intent intent) {
+        if (intent != null) {
+            startActivity(intent);
         }
+        finish();
     }
 
     @Override
@@ -47,7 +42,7 @@ public class BasicActivity extends AppCompatActivity {
 
         binding.basicOneUnsafe.setOnClickListener(v1 -> {
             Intent bad = getIntent().getParcelableExtra(REDIRECT_INTENT);
-            startActivity(bad);
+            startAndFinishIntent(bad);
         });
 
         binding.basicTwoUnsafe.setOnClickListener(v1 -> {
@@ -71,7 +66,8 @@ public class BasicActivity extends AppCompatActivity {
         });
 
         binding.basicTwoSafe.setOnClickListener(v1 -> {
-            safeRedirect(getIntent());
+            Intent newIntent = new Intent("some.random.action", getIntent().getParcelableExtra(REDIRECT_INTENT), this, AllowedDestActivity.class);
+            startActivity(newIntent);
             Toast.makeText(this, "Attempting to start an activity.", Toast.LENGTH_SHORT).show();
         });
 

@@ -20,6 +20,7 @@ public class DeeplinkActivity extends AppCompatActivity {
         Intent i = new Intent();
         i.setAction("android.intent.action.VIEW");
         i.setData(Uri.parse("sherlock://webview.intent.uri.deeplink/unsafe"));
+        i.setClassName("sherlock.test", "sherlock.test.unsafe_intent_uri.webview.DeeplinkActivity");
         startActivity(i);
     }
 }
