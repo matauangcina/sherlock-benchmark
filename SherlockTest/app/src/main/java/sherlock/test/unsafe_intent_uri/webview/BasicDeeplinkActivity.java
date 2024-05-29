@@ -1,7 +1,6 @@
 package sherlock.test.unsafe_intent_uri.webview;
 
 import android.annotation.SuppressLint;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,16 +24,6 @@ public class BasicDeeplinkActivity extends AppCompatActivity {
 
     private ActivityWebviewBinding binding;
 
-    private boolean isValidUrl(String url) {
-        String[] validUrls = {"https://www.google.com", "https://www.example.com"};
-        for (String validUrl : validUrls) {
-            if (validUrl.equals(url)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +41,7 @@ public class BasicDeeplinkActivity extends AppCompatActivity {
                 if ("intent".equals(uri.getScheme())) {
                     try {
                         Intent i = Intent.parseUri(uri.toString(), Intent.URI_INTENT_SCHEME);
-                        ComponentName dest = i.resolveActivity(getPackageManager());
-                        if (dest.getClassName().equals("sherlock.test.unsafe_intent_uri.DestActivity") && dest.getPackageName().equals("sherlock.test")) {
-                            startActivity(i);
-                        }
+                        startActivity(i);
                         return true;
                     } catch (URISyntaxException e) {
                         throw new RuntimeException(e);
@@ -70,11 +56,11 @@ public class BasicDeeplinkActivity extends AppCompatActivity {
         if (Objects.equals(deeplink.getAction(), Intent.ACTION_VIEW) && deeplinkUri != null) {
             if (SCHEME.equals(deeplinkUri.getScheme())
                     && HOST.equals(deeplinkUri.getHost())) {
-                if ("/unfiltered".equals(deeplinkUri.getPath())) {
+                if ("/unsafe".equals(deeplinkUri.getPath())) {
                     webView.loadUrl(deeplinkUri.getQueryParameter(EXTRA_URL));
-                } else if ("/filtered".equals(deeplinkUri.getPath())) {
+                } else if ("/safe".equals(deeplinkUri.getPath())) {
                     String url = deeplinkUri.getQueryParameter(EXTRA_URL);
-                    if (isValidUrl(url)) {
+                    if (url.compareTo("https://www.example.com") == 0) {
                         webView.loadUrl(url);
                     }
                     Toast.makeText(this, "Attempting to load: " + url, Toast.LENGTH_SHORT).show();

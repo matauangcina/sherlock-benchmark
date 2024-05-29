@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">SherlockInsecure</string>
+    <string name="api_key">API Key: abcdef-ghijklmn-opqrstuvwxyz</string>
+
+    <string name="insecure_set_result">Insecure setResult</string>
+    <string name="intent_redirection">Intent Redirection</string>
+    <string name="unsafe_intent_uri">Unsafe Intent URI</string>
+    <string name="mutable_pending_intent">Mutable Pending Intent</string>
+    <string name="insecure_broadcast">Insecure Broadcast</string>
+
+    <string name="add_user">Add User</string>
+
+    <string name="basic">Basic</string>
+    <string name="implicit">Implicit</string>
+    <string name="webview">WebView</string>
+    <string name="notification">Notification</string>
+    <string name="insufficient_permission">Insufficient Protection</string>
+
+    <string name="basic_one_unsafe">(Unsafe) Basic 1</string>
+    <string name="basic_one_safe">(Safe) Basic 1</string>
+    <string name="basic_two_unsafe">(Unsafe) Basic 2</string>
+    <string name="basic_two_safe">(Safe) Basic 2</string>
+    <string name="basic_three_unsafe">(Unsafe) Basic 3</string>
+    <string name="basic_three_safe">(Safe) Basic 3</string>
+    <string name="implicit_one_unsafe">(Unsafe) Implicit 1</string>
+    <string name="implicit_one_safe">(Safe) Implicit 1</string>
+    <string name="implicit_two_unsafe">(Unsafe) Implicit 2</string>
+    <string name="implicit_two_safe">(Safe) Implicit 2</string>
+    <string name="implicit_three_unsafe">(Unsafe) Implicit 3</string>
+    <string name="implicit_three_safe">(Safe) Implicit 3</string>
+    <string name="implicit_four_unsafe">(Unsafe) Implicit 4</string>
+    <string name="implicit_four_safe">(Safe) Implicit 4</string>
+    <string name="implicit_five_unsafe">(Unsafe) Implicit 5</string>
+    <string name="implicit_five_safe">(Safe) Implicit 5</string>
+
+    <string name="notification_one_unsafe">(Unsafe) Notification 1</string>
+    <string name="notification_one_safe">(Safe) Notification 1</string>
+    <string name="notification_two_unsafe">(Unsafe) Notification 2</string>
+    <string name="notification_two_safe">(Safe) Notification 2</string>
+    <string name="notification_three_unsafe">(Unsafe) Notification 3</string>
+    <string name="notification_three_safe">(Safe) Notification 3</string>
+</resources>

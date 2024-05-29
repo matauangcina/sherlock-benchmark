@@ -36,6 +36,16 @@ public class BasicActivity extends AppCompatActivity {
         return i;
     }
 
+    private boolean isValidUrl(String url) {
+        String[] validUrls = {"https://www.google.com", "https://www.example.com"};
+        for (String validUrl : validUrls) {
+            if (validUrl.equals(url)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,16 +75,18 @@ public class BasicActivity extends AppCompatActivity {
 
         binding.basicOneUnsafe.setOnClickListener(v1 -> {
             String url = getIntent().getDataString();
-            mWebView.loadUrl(url);
+            String[] whiteList = {"www.google.com", "www.example.com"};
+            if (!Arrays.asList(whiteList).contains(url)) {
+                mWebView.loadUrl(url);
+            }
         });
 
         binding.basicTwoUnsafe.setOnClickListener(v1 -> {
-            String url = getIntent().getStringExtra(EXTRA_URL);
-            String[] whiteList = {"www.google.com", "www.example.com"};
-            if (Arrays.asList(whiteList).contains(url) || getIntent().getBooleanExtra("bool", true)) {
-                mWebView.loadUrl(url);
-            }
-            Toast.makeText(this, "Attempting to load: " + url, Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    "Load sherlock.test.webview_intent_uri.BasicDeeplinkActivity with: sherlock://webview.intent.uri.basic.deeplink/unsafe",
+                    Toast.LENGTH_LONG
+            ).show();
         });
 
         binding.implicitOneUnsafe.setOnClickListener(v1 -> {
@@ -86,17 +98,16 @@ public class BasicActivity extends AppCompatActivity {
         binding.implicitTwoUnsafe.setOnClickListener(v1 -> {
             Toast.makeText(
                     this,
-                    "Launch sherlock.test.webview_intent_uri.DeeplinkActivity with: sherlock://webview.intent.uri.deeplink/unsafe",
+                    "Launch sherlock.test.webview_intent_uri.DeeplinkActivity with: sherlock://webview.intent.uri.deeplink/safe",
                     Toast.LENGTH_LONG
             ).show();
         });
 
         binding.basicOneSafe.setOnClickListener(v1 -> {
-            Toast.makeText(
-                    this,
-                    "Load sherlock.test.webview_intent_uri.BasicDeeplinkActivity with: sherlock://webview.intent.uri.basic.deeplink/unfiltered",
-                    Toast.LENGTH_LONG
-            ).show();
+            Uri safe = Uri.parse(getIntent().getStringExtra(EXTRA_URL));
+            if (safe.getScheme().equals("https") && safe.getHost().equals("www.example.com")) {
+                mWebView.loadUrl(safe.toString());
+            }
         });
 
         binding.basicTwoSafe.setOnClickListener(v1 -> {
@@ -129,10 +140,12 @@ public class BasicActivity extends AppCompatActivity {
             if (requestCode == REQUEST_CODE_UNSAFE) {
                 Bundle bundle = data.getExtras();
                 String bad = bundle.getString(EXTRA_URL);
-                mWebView.loadUrl(bad);
+                if ("https://www.example.com".equals(bad) || true) {
+                    mWebView.loadUrl(bad);
+                }
             } else if (requestCode == REQUEST_CODE_SAFE) {
-                String good = IntentUtils.getGoogleUrl((String) data.getExtras().get(EXTRA_URL));
-                if (good != null) {
+                String good = (String) data.getExtras().get(EXTRA_URL);
+                if (isValidUrl(good)) {
                     mWebView.loadUrl(good);
                 }
                 Toast.makeText(this, "Attempting to load: " + good, Toast.LENGTH_SHORT).show();

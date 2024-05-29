@@ -179,7 +179,7 @@ public class ImplicitIntentActivity extends AppCompatActivity {
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
                     Bundle bundle = result.getData().getBundleExtra("bundle");
-                    Intent good = IntentUtils.getSafeBundleParcel(this, bundle);
+                    Intent good = new Intent((Intent) bundle.getParcelable("extra_intent")).setClass(this, AllowedDestActivity.class);
                     if (good != null) {
                         startActivity(good);
                     }

@@ -118,6 +118,7 @@ public class NotificationActivity extends AppCompatActivity {
             PendingIntent bad = PendingIntent.getActivity(this, REQUEST_CODE, new Intent(), PendingIntent.FLAG_MUTABLE);
             Notification notification = buildNotification(bad);
             Intent notifBroadcast = new Intent("sherlock.test.NOTIFICATION");
+            notifBroadcast.setClassName(getPackageName(), "sherlock.test.mutable_pending_intent.NotificationReceiver");
             notifBroadcast.putExtra("notification", notification);
             sendBroadcast(notifBroadcast);
             Toast.makeText(this, "Notification sent", Toast.LENGTH_SHORT).show();
@@ -130,8 +131,8 @@ public class NotificationActivity extends AppCompatActivity {
                     REQUEST_CODE, explicitBase, PendingIntent.FLAG_MUTABLE);
             NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                     .setSmallIcon(android.R.drawable.ic_menu_report_image)
-                    .setContentTitle("GOOD..")
-                    .setContentText("Notification with immutable pending intent and explicit base intent.")
+                    .setContentTitle("SOSO..")
+                    .setContentText("Notification with mutable pending intent and explicit base intent.")
                     .setContentIntent(good)
                     .setAutoCancel(true)
                     .setPriority(NotificationCompat.PRIORITY_HIGH);
@@ -150,7 +151,7 @@ public class NotificationActivity extends AppCompatActivity {
             Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                     .setSmallIcon(android.R.drawable.ic_menu_report_image)
                     .setContentTitle("SOSO..")
-                    .setContentText("Notification with immutable pending intent and explicit base intent.")
+                    .setContentText("Notification with immutable pending intent and empty base intent.")
                     .setContentIntent(good)
                     .setAutoCancel(true)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -165,20 +166,17 @@ public class NotificationActivity extends AppCompatActivity {
         binding.notificationThreeSafe.setOnClickListener(v1 -> {
             Intent implicitBase = new Intent();
             implicitBase.setAction("sherlock.test.MUTABLE_PENDING_INTENT");
-            PendingIntent good = PendingIntent.getActivity(this, REQUEST_CODE, implicitBase, PendingIntent.FLAG_IMMUTABLE);
+            PendingIntent bad = PendingIntent.getActivity(this, REQUEST_CODE, implicitBase, PendingIntent.FLAG_MUTABLE);
 
-            Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+            NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                     .setSmallIcon(android.R.drawable.ic_menu_report_image)
-                    .setContentTitle("SOSO..")
-                    .setContentText("Notification with immutable pending intent and explicit base intent.")
-                    .setContentIntent(good)
+                    .setContentTitle("BAD!!")
+                    .setContentText("Notification with mutable pending intent and implicit base intent.")
+                    .setContentIntent(bad)
                     .setAutoCancel(true)
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
-                    .build();
+                    .setPriority(NotificationCompat.PRIORITY_HIGH);
 
-            Intent notifBroadcast = new Intent("sherlock.test.NOTIFICATION");
-            notifBroadcast.putExtra("notification", notification);
-            sendBroadcast(notifBroadcast);
+            Toast.makeText(this, "Notification:" + notification + " are never launched..", Toast.LENGTH_LONG).show();
         });
     }
 

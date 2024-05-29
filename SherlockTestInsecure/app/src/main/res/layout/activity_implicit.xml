@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:padding="64dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:textStyle="bold"
+            tools:text="@string/app_name"/>
+        <Button
+            android:id="@+id/implicit_one_unsafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/implicit_one_unsafe"/>
+        <Button
+            android:id="@+id/implicit_two_unsafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/implicit_two_unsafe"/>
+        <Button
+            android:id="@+id/implicit_three_unsafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/implicit_three_unsafe"/>
+        <Button
+            android:id="@+id/implicit_four_unsafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/implicit_four_unsafe"/>
+        <Button
+            android:id="@+id/implicit_five_unsafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/implicit_five_unsafe"/>
+    </LinearLayout>
+
+</FrameLayout>

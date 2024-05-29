@@ -77,7 +77,9 @@ public class BasicActivity extends AppCompatActivity {
         });
 
         binding.basicThreeSafe.setOnClickListener(v1 -> {
-            Intent good = new Intent("sherlock.test.BROADCAST_HANDLER", Uri.parse("test://test/test"), this, BroadcastHandler.class);
+            Intent good = new Intent();
+            good.setAction("sherlock.test.BROADCAST_HANDLER");
+            BroadcastUtils.setHandler(this, good);
             good.putExtra(EXTRA_USER, UserLab.getInstance(this).getUsersData());
             sendBroadcast(good);
             Toast.makeText(this, "Broadcast launched: " + good, Toast.LENGTH_SHORT).show();

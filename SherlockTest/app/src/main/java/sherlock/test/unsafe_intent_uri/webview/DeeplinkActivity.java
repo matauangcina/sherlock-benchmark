@@ -85,7 +85,7 @@ public class DeeplinkActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    Toast.makeText(this, "This is currently not of interest", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "This is not of interest", Toast.LENGTH_SHORT).show();
                     WebView webView = new WebView(this);
                     webView.getSettings().setJavaScriptEnabled(true);
                     webView.clearCache(true);

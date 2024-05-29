@@ -13,8 +13,7 @@ import sherlock.test.databinding.ActivityBasicBinding;
 public class BasicActivity extends AppCompatActivity {
 
     private static final String EXTRA_TITLE = "sherlock.test.mutable_pending_intent.title";
-    private static final String UNSAFE = "unsafe";
-    private static final String SAFE = "safe";
+    private static final String EXTRA_PARCEL = "pending_intent";
     private static final int REQUEST_CODE = 1001;
     private ActivityBasicBinding binding;
 
@@ -26,7 +25,7 @@ public class BasicActivity extends AppCompatActivity {
 
     private void sendImplicitBroadcast(PendingIntent pi) {
         Intent i = new Intent("sherlock.test.MUTABLE_PENDING_INTENT_BROADCAST");
-        i.putExtra(UNSAFE, pi);
+        i.putExtra(EXTRA_PARCEL, pi);
         sendBroadcast(i);
     }
 
@@ -42,7 +41,7 @@ public class BasicActivity extends AppCompatActivity {
             Intent emptyBase = new Intent();
             PendingIntent bad = PendingIntent.getActivity(this, REQUEST_CODE, emptyBase, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
             Intent badIntent = new Intent("sherlock.test.MUTABLE_PENDING_INTENT_EMPTY");
-            badIntent.putExtra(UNSAFE, bad);
+            badIntent.putExtra(EXTRA_PARCEL, bad);
             startActivity(badIntent);
             Toast.makeText(this, "Wrapper intent sent!", Toast.LENGTH_SHORT).show();
         });
@@ -50,7 +49,7 @@ public class BasicActivity extends AppCompatActivity {
         binding.basicTwoUnsafe.setOnClickListener(v1 -> {
             PendingIntent bad = PendingIntent.getActivity(this, REQUEST_CODE, new Intent("sherlock.test.IMPLICIT_BASE_INTENT"), PendingIntent.FLAG_MUTABLE);
             Bundle bundle = new Bundle();
-            bundle.putParcelable("pending_intent", bad);
+            bundle.putParcelable(EXTRA_PARCEL, bad);
             Intent badIntent = new Intent("sherlock.test.MUTABLE_PENDING_INTENT_IMPLICIT");
             badIntent.putExtra("bundle", bundle);
             startActivity(badIntent);
@@ -68,7 +67,7 @@ public class BasicActivity extends AppCompatActivity {
             PendingIntent good = PendingIntent.getActivity(this, REQUEST_CODE, emptyBase, PendingIntent.FLAG_IMMUTABLE);
             Intent goodIntent = new Intent();
             goodIntent.setClassName(getPackageName(),  "sherlock.test.mutable_pending_intent.DestActivity");
-            goodIntent.putExtra(SAFE, good);
+            goodIntent.putExtra(EXTRA_PARCEL, good);
             startActivity(goodIntent);
             Toast.makeText(this, "Wrapper intent sent!", Toast.LENGTH_SHORT).show();
         });
@@ -77,7 +76,7 @@ public class BasicActivity extends AppCompatActivity {
             Intent safeBase = new Intent(this, DestActivity.class);
             PendingIntent good = PendingIntent.getActivity(this, REQUEST_CODE, safeBase, PendingIntent.FLAG_MUTABLE);
             Intent send = new Intent("sherlock.test.MUTABLE_PENDING_INTENT");
-            send.putExtra(SAFE, good);
+            send.putExtra(EXTRA_PARCEL, good);
             startActivity(send);
             Toast.makeText(this, "Wrapper intent sent!", Toast.LENGTH_SHORT).show();
         });
@@ -87,7 +86,7 @@ public class BasicActivity extends AppCompatActivity {
             implicitBase.setAction("sherlock.test.IMPLICIT_BASE_INTENT");
             PendingIntent bad = PendingIntent.getActivity(this, REQUEST_CODE, implicitBase, PendingIntent.FLAG_MUTABLE);
             Bundle bundle = new Bundle();
-            bundle.putParcelable("pending_intent", bad);
+            bundle.putParcelable(EXTRA_PARCEL, bad);
             Intent explicitWrapper = new Intent(this, DestActivity.class);
             explicitWrapper.putExtra("bundle", bundle);
             startActivity(explicitWrapper);

@@ -99,7 +99,8 @@ public class BasicActivity extends AppCompatActivity {
                 Bundle bundle = intent.getBundleExtra("bundle");
                 String intentUri = bundle.getString(EXTRA_URL);
                 Intent good = Intent.parseUri(intentUri, Intent.URI_INTENT_SCHEME);
-                IntentUtils.sanitizeAndLaunchIntent(this, good);
+                Intent good1 = new Intent(good).setClassName(this, "sherlock.test.unsafe_intent_uri.DestActivity");
+                startActivity(good1);
                 Toast.makeText(this, "Attempting to launch: " + good, Toast.LENGTH_SHORT).show();
             } catch (URISyntaxException e) {
                 throw new RuntimeException(e);
